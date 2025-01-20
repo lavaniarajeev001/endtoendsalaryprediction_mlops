@@ -1,0 +1,13 @@
+prefix=E:/ML Folder/endtoendsalaryprediction_MLOps/venv/Library
+exec_prefix=E:/ML Folder/endtoendsalaryprediction_MLOps/venv/Library
+libdir=E:/ML Folder/endtoendsalaryprediction_MLOps/venv/Library/lib
+sharedlibdir=E:/ML Folder/endtoendsalaryprediction_MLOps/venv/Library/lib
+includedir=E:/ML Folder/endtoendsalaryprediction_MLOps/venv/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
