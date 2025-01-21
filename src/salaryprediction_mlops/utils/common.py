@@ -8,9 +8,10 @@ from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
+from typing import List
 
 @ensure_annotations
-def read_yaml(path_to_yaml:Path)-> ConfigBox:
+def read_yaml(path_to_yaml:Path)->ConfigBox:
     try:
         with open(path_to_yaml) as yaml_file:
             content=yaml.safe_load(yaml_file)
@@ -20,21 +21,15 @@ def read_yaml(path_to_yaml:Path)-> ConfigBox:
         return ValueError
     except Exception as e:
         raise e
-    
+
 @ensure_annotations
-def create_direcotries(paths,verbose=False):
+def create_directories(paths, verbose=False):
     for path in paths:
         if not os.path.exists(path):
-            os.makedirs(path,exist_ok=True)
+            os.makedirs(path)
             if verbose:
-                print(f"Created dirctory at {path}")
+                print(f"Created directory at: {path}")
 
-@ensure_annotations
-def get_size(path=Path)->list:
-    size_in_kb=round(os.path.getsize(path)/1024,2)
-    return size_in_kb
-
-@ensure_annotations
 @ensure_annotations
 def save_json(path:Path, data:dict):
     with open(path, "w") as f:
@@ -58,3 +53,8 @@ def load_bin(path:Path)->Any:
     data=joblib.load(path)
     logger.info(f"loading binary file from : {path}")
     return data
+
+@ensure_annotations
+def get_size(path=Path)->list:
+    size_in_kb=round(os.path.getsize(path)/1024,2)
+    return size_in_kb        
